@@ -19,11 +19,11 @@ const ListItemElement: React.FC<ListItemProps> = ({ listItem }) => {
 
   return (
     <div className="flex flex-col items-center" key={listItem.title}>
-      <h3 className="text-black">{listItem.title}</h3>
+      <h3 className="text-black text-xl pt-3">{listItem.title}</h3>
       <div className="w-2/5">
         <ImageComponent imgElement={imgItemPropsComponent} />
       </div>
-      <p className="text-black">{listItem.description}</p>
+      <p className="text-black pb-2">{listItem.description}</p>
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React from "react";
 import {
   ButtonType,
-  Funnel,
   FunnelPage,
   ImageType,
   ListItem,
@@ -13,19 +12,24 @@ import { ButtonComponent } from "../buttonComponent/ButtonComponent";
 import { ListComponent } from "../listComponent/ListComponent";
 
 interface FunnelComponentProps {
-  funnel: Funnel;
+  funnel: FunnelPage;
+  bgColor: string;
 }
 
-const FunnelComponent: React.FC<FunnelComponentProps> = ({ funnel }) => {
+const FunnelComponent: React.FC<FunnelComponentProps> = ({
+  funnel,
+  bgColor,
+}) => {
   const baseStyles: React.CSSProperties = {
     width: "375px",
     height: "600px",
     overflowY: "scroll",
     overflowX: "hidden",
-    border: "15px solid #333",
+    border: "15px solid #000",
     padding: "30px 5px",
     marginTop: "60px",
     borderRadius: "25px",
+    backgroundColor: bgColor,
   };
 
   const logoELement: ImageType = {
@@ -35,18 +39,12 @@ const FunnelComponent: React.FC<FunnelComponentProps> = ({ funnel }) => {
   };
 
   return (
-    <div
-      className="flex items-center flex-col p-5"
-      style={{ backgroundColor: funnel.bgColor }}
-    >
-      <h1 className="text-black">{funnel.name}</h1>
+    <div className="flex items-center flex-col p-5">
       <div className="flex flex-col items-center" style={{ ...baseStyles }}>
         <div style={{ width: "70px" }}>
           <ImageComponent imgElement={logoELement} />
         </div>
-        {funnel.pages.map((page) => (
-          <FunnelPageComponent key={page.id} page={page} />
-        ))}
+        <FunnelPageComponent key={funnel.id} page={funnel} />
       </div>
     </div>
   );

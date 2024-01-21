@@ -32,7 +32,6 @@ export interface ButtonType extends ImportedPageElement {
     bgColor: string;
 }
 
-
 export interface ListItemType {
     title: string;
     description: string;
