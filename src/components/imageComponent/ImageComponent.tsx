@@ -1,15 +1,32 @@
 import React from "react";
-import { ImgType } from "../../types";
+import { ImageType } from "../../types";
 
-const ImageComponent: React.FC<ImgType> = ({ src, id = "123" }) => {
+interface ImageTypeProps {
+  imgElement: ImageType;
+}
+
+const ImageComponent: React.FC<ImageTypeProps> = ({ imgElement }) => {
   const componentStyle: React.CSSProperties = {
     maxWidth: "100%",
-    maxHeight: "366px",
+    maxHeight: "100%",
   };
 
   return (
-    <div id={id}>
-      <img src={src} alt={`Image ${id}`} style={{ ...componentStyle }} />
+    <div
+      id={imgElement.id}
+      style={{
+        display: "flex",
+        padding: "15px",
+        // border: "1px solid red",
+        alignContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <img
+        src={imgElement.src}
+        alt={`Image ${imgElement.id}`}
+        style={{ ...componentStyle }}
+      />
     </div>
   );
 };

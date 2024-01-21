@@ -1,19 +1,22 @@
 import React from "react";
 import { TextType } from "../../types";
 
-const TextComponent: React.FC<TextType> = ({
-  text = "You need to add text",
-  color = "white",
-  align = "start",
-  id = "123",
-}) => {
+interface TextTypeProps {
+  textElement: TextType;
+}
+
+const TextComponent: React.FC<TextTypeProps> = ({ textElement }) => {
   const componentStyle: React.CSSProperties = {
-    color: color,
-    textAlign: align,
+    color: textElement.color,
   };
   return (
-    <div id={id}>
-      <p style={{ ...componentStyle }}>{text}</p>
+    <div id={textElement.id}>
+      <p
+        className={`text-${textElement.align} text-xl font-bold`}
+        style={{ ...componentStyle }}
+      >
+        {textElement.text}
+      </p>
     </div>
   );
 };

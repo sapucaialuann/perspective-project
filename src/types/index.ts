@@ -6,7 +6,7 @@ export interface Funnel {
 
 export interface FunnelPage {
     id: string;
-    blocks: ImportedPageElement[];
+    blocks: (TextType | ImageType | ButtonType | ListItem)[];
 }
 
 type ComponentType = 'text' | 'image' | 'button' | 'list';
@@ -22,7 +22,7 @@ export interface TextType extends ImportedPageElement {
     align: string;
 }
 
-export interface ImgType extends ImportedPageElement {
+export interface ImageType extends ImportedPageElement {
     src: string;
 }
 
@@ -32,10 +32,13 @@ export interface ButtonType extends ImportedPageElement {
     bgColor: string;
 }
 
-export interface ListType extends ImportedPageElement {
-    items: {
-        title: string;
-        description: string;
-        src: string;
-    }[];
+
+export interface ListItemType {
+    title: string;
+    description: string;
+    src: string;
+}
+
+export interface ListItem extends ImportedPageElement {
+    items: ListItemType[];
 }
