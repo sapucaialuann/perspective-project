@@ -14,9 +14,13 @@ function App() {
     if (file) {
       try {
         const jsonData = await parseJsonFile(file);
+        if (!jsonData || !jsonData.pages || jsonData.pages.length === 0) {
+          throw new Error("Invalid JSON format: Missing pages.");
+        }
         setFunnel(jsonData);
       } catch (error) {
         console.error("Error parsing JSON:", error);
+        alert("Error parsing or validating JSON. Please check the file.");
       }
     }
   };
@@ -59,7 +63,9 @@ function App() {
               ref={fileInputRef}
               style={{ display: "none" }}
             />
-            <button onClick={handleUploadAnotherFile}>Upload File</button>
+            <button onClick={handleUploadAnotherFile}>
+              Upload another File
+            </button>
           </>
         </>
       )}
